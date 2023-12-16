@@ -12,6 +12,9 @@ This microservice handles data for both users and trips. User data is stored in 
 Architecture Diagram
 
 Architecture Diagram
+![Architecture Diagram](https://github.com/nidhoggmega/Car-Pooling/assets/92702429/2af750d5-99dd-4a5b-8445-dcf7d1f36ae2)
+
+
 Instructions for Setting Up and Running Microservices
 
     Clone the repository:
