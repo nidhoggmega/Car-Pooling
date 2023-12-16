@@ -20,7 +20,7 @@ CREATE TABLE users (
 );
 
 -- trips table
-CREATE database carpool;
+CREATE database carpooling;
 
 use carpool;
 CREATE TABLE trips (
