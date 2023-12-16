@@ -42,9 +42,6 @@ type Trips struct {
 
 var users = make(map[string]User)
 var trips = make(map[string]Trip)
-
-// var users []User
-// var trips []Trip
 func main() {
 
 	router := mux.NewRouter()
@@ -53,6 +50,7 @@ func main() {
 	router.HandleFunc("/api/v1/users", CreateUser).Methods("POST")
 	router.HandleFunc("/api/v1/users/{id}", GetUser).Methods("GET")
 	router.HandleFunc("/users/{id}", DeleteUser).Methods("DELETE")
+	router.HandleFunc("/users/{id}", UpdateUser).Methods(("PUT"))
 	router.HandleFunc("/api/v1/trips", CreateTrip).Methods("POST")
 	router.HandleFunc("/api/v1/trips/{id}", UpdateTrip).Methods("PUT")
 	router.HandleFunc("/trips", GetAllTrips).Methods("GET")
@@ -98,6 +96,7 @@ func GetUser(w http.ResponseWriter, r *http.Request) {
 func generateID() string {
 	return fmt.Sprintf("%d", time.Now().UnixNano())
 }
+// Update user information
 func updateUserHandler(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
 	userID := params["id"]
@@ -114,8 +113,6 @@ func updateUserHandler(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-
-	// Update user information
 	existingUser.FirstName = updatedUser.FirstName
 	existingUser.LastName = updatedUser.LastName
 	existingUser.Mobile = updatedUser.Mobile
